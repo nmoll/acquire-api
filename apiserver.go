@@ -40,6 +40,7 @@ func (s *ApiServer) handleGameRequest(w http.ResponseWriter, req *http.Request) 
 	case http.MethodGet:
 		s.getGame(w, req)
 	case http.MethodPost:
+		s.updateGame(w, req)
 	case http.MethodPatch:
 		s.updateGame(w, req)
 	default:
