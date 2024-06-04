@@ -75,7 +75,7 @@ func (s *ApiServer) updateGame(w http.ResponseWriter, req *http.Request) {
 }
 
 func (s *ApiServer) getGame(w http.ResponseWriter, req *http.Request) {
-	id := strings.TrimPrefix(req.URL.Path, "/game/")
+	id := strings.TrimPrefix(req.URL.Path, "/api/game/")
 
 	w.Header().Set("Content-Type", "application/json")
 
