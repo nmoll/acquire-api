@@ -14,7 +14,7 @@ func TestApiServer_GetGame(t *testing.T) {
 	apiServer := NewApiServer()
 
 	t.Run("Should return StatusNotFound if no game is found", func(t *testing.T) {
-		req := httptest.NewRequest(http.MethodGet, "/game/1", nil)
+		req := httptest.NewRequest(http.MethodGet, "/api/game/1", nil)
 
 		w := httptest.NewRecorder()
 
@@ -36,7 +36,7 @@ func TestApiServer_GetGame(t *testing.T) {
 		}
 		games["1"] = *NewGame("1", gameData)
 
-		req := httptest.NewRequest(http.MethodGet, "/game/1", nil)
+		req := httptest.NewRequest(http.MethodGet, "/api/game/1", nil)
 		w := httptest.NewRecorder()
 
 		apiServer.handleGameRequest(w, req)
@@ -75,7 +75,7 @@ func TestApiServer_UpdateGame(t *testing.T) {
 		}
 		body, _ := json.Marshal(postBody)
 
-		req := httptest.NewRequest(http.MethodPost, "/game/2", bytes.NewReader(body))
+		req := httptest.NewRequest(http.MethodPost, "/api/game/2", bytes.NewReader(body))
 		w := httptest.NewRecorder()
 
 		apiServer.updateGame(w, req)
@@ -130,7 +130,7 @@ func TestApiServer_UpdateGame(t *testing.T) {
 		}
 		body, _ := json.Marshal(postBody)
 
-		req := httptest.NewRequest(http.MethodPost, "/game/3", bytes.NewReader(body))
+		req := httptest.NewRequest(http.MethodPost, "/api/game/3", bytes.NewReader(body))
 		w := httptest.NewRecorder()
 
 		apiServer.updateGame(w, req)

@@ -49,7 +49,7 @@ func (s *ApiServer) handleGameRequest(w http.ResponseWriter, req *http.Request) 
 }
 
 func (s *ApiServer) updateGame(w http.ResponseWriter, req *http.Request) {
-	id := strings.TrimPrefix(req.URL.Path, "/game/")
+	id := strings.TrimPrefix(req.URL.Path, "/api/game/")
 	decoder := json.NewDecoder(req.Body)
 
 	var data GameData
@@ -93,7 +93,7 @@ func (s *ApiServer) getGame(w http.ResponseWriter, req *http.Request) {
 }
 
 func (s *ApiServer) ListenAndServe(addr string) {
-	http.HandleFunc("/game/{id}", s.handleGameRequest)
+	http.HandleFunc("/api/game/{id}", s.handleGameRequest)
 
 	http.ListenAndServe(":8090", nil)
 }
